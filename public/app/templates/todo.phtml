@@ -1,0 +1,117 @@
+
+<div  class="main-container ace-save-state" id="main-container" ng-controller="UserController as userActions">
+
+    <div class="row">
+        <span class="col-md-1.5" ng-include="'/app/templates/sidebar.phtml'"  style="padding-left: 40px"></span>
+        <div class="main-content col-md-10 "  >
+            <div class="main-content-inner ">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li >Dashboard</li>
+                        <li  class="active">Tasks</li>
+                    </ul><!-- /.breadcrumb -->
+
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search tasks" class="nav-search-input" id="nav-search-input" autocomplete="off" ng-model="todo_fields" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                        </form>
+                    </div><!-- /.nav-search -->
+                </div>
+
+                <div class="page-content">
+
+                    <div class="page-header">
+                        <h1>
+                            Tasks
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                List
+                            </small>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row" style="background:#f5f5f5;">
+
+                            <div class="widget-box transparent" id="recent-box" >
+                                <div class="widget-header">
+                                    <h4 class="widget-title lighter smaller">
+                                        <i class="ace-icon fa fa-sticky-note blue"></i>Todo's
+                                    </h4>
+                                    <span class="badge badge-info" ng-click="userActions.addTodo()">Add Task</span>
+                                </div>
+
+
+                                <div class="widget-body" >
+                                    <div class="widget-main " >
+
+                                    <!--<ul style="list-style:none;  overflow:hidden; padding:3em; ">
+
+                                    <li style="list-style:none;  margin:1em; float:left;">-->
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h3 class="center">Pending Tasks</h3>
+                                                <div href="#" ng-if="todo.status_id == 0" class="{{todo.color_name}} col-md-4 " style="text-decoration:none;color:#000; background:white;  display:block;  height:15em;  width:20em;  padding:1em; margin: 20px;
+                                                 /* Firefox */ -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+                                                 /* Safari+Chrome */  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+                                                /* Opera */box-shadow: 5px 5px 7px rgba(33,33,33,.7);" ng-repeat="todo in userActions.todos | filter:todo_fields">
+                                                    <label class="pos-rel">
+                                                        <input  type="checkbox" class="ace"  ng-model="todo.status_id"  ng-true-value = "1" ng-false-value="0" ng-change="userActions.updateStatus(todo.id,todo.status_id)"/>
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                    <i class="ace-icon glyphicon glyphicon-remove pull-right red" ng-click="userActions.deleteTodo(todo.id)"></i>
+
+
+                                                    <h2 style="font-weight:bold; font-size:100%; padding-bottom:10px;">{{todo.description}} </h2>
+
+
+                                                    <p style="font-weight:normal;font-size:90%;font-family: "Open San"">{{todo.time | toTime}}</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="hr-2">
+                                            <div class="col-md-4">
+                                                <h3 class="center">Done Tasks</h3>
+                                                <div href="#" ng-if="todo.status_id == 1" class="{{todo.color_name}} col-md-4 " style="text-decoration:none;color:#000; background:white;  display:block;  height:15em;  width:20em;  padding:1em; margin: 20px;
+                                                 /* Firefox */ -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+                                                 /* Safari+Chrome */  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+                                                /* Opera */box-shadow: 5px 5px 7px rgba(33,33,33,.7);" ng-repeat="todo in userActions.todos | filter:todo_fields">
+                                                    <i class="ace-icon glyphicon glyphicon-remove pull-right red" ng-click="userActions.deleteTodo(todo.id)"></i>
+
+
+                                                    <h2 style="font-weight:bold; font-size:100%; padding-bottom:10px;">{{todo.description}} </h2>
+
+
+                                                    <p style="font-weight:normal;font-size:90%;font-family: "Open San"">{{todo.time }}</p>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                              <!--  </li>
+
+                                            </ul>-->
+
+
+                            </div><!-- /.widget-box -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+
+        </div><!-- /.main-content -->
+    </div>
+
+</div>
+
+

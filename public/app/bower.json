@@ -1,0 +1,28 @@
+{
+  "name": "customerApp",
+  "description": "Using angular js to consume apis",
+  "main": "index.js",
+  "authors": [
+    "oyinkansola ariyo <oyinkansolaariyo@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-resource": "^1.6.1",
+    "domready": "^1.0.8",
+    "requirejs": "^2.3.2",
+    "moment": "^2.17.1"
+  },
+  "resolutions": {
+    "angular": "^1.6.1"
+  }
+}

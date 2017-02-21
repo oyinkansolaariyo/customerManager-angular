@@ -1,0 +1,200 @@
+<div  class="main-container ace-save-state" id="main-container" ng-controller="CustomerController as customerDetails">
+    <div class="row">
+        <span class="col-md-1.5" ng-include="'/app/templates/sidebar.phtml'"  style="padding-left: 40px"></span>
+        <div class="main-content col-md-10 "  >
+            <div class="main-content-inner ">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li >Dashboard</li>
+                        <li  class="active">Customers</li>
+                        <li>Customer Detail</li>
+                    </ul><!-- /.breadcrumb -->
+
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search Conversation" class="nav-search-input" id="nav-search-input" autocomplete="off" ng-model="conversation_fields" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                        </form>
+                    </div><!-- /.nav-search -->
+                </div>
+
+                <div class="page-content">
+
+                    <div class="page-header">
+                        <h1>
+                            Customer
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                details
+                            </small>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+
+                                <div id="user-profile-1" class="user-profile row">
+                                    <div class="row">
+                                    <div class="col-xs-6 col-sm-3 ">
+                                        <div>
+                                            <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                                <div class="inline position-relative">
+                                                    <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="ace-icon fa fa-circle light-green"></i>
+                                                        &nbsp;
+                                                        <span class="white">{{customerDetails.details.customer_name}}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3" >
+                                            <span class="center pull-left" >Conversations: {{customerDetails.conversation_count}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="space-6"></div>
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div class="profile-user-info profile-user-info-striped">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">  Customer name </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span class="editable" id="username">{{customerDetails.details.customer_name}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Location </div>
+
+                                                    <div class="profile-info-value">
+                                                        <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                                        <span class="editable" id="city">	{{customerDetails.details.address}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Phone number </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span class="editable" id="age">{{customerDetails.details.phone_number}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Email </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span class="editable" id="signup">	{{customerDetails.details.email}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Status </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span class="editable" id="login" ng-if="customerDetails.details.status_id == 1">Active</span>
+                                                        <span class="editable" id="login" ng-if="customerDetails.details.status_id == 0">InActive</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Created</div>
+
+                                                    <div class="profile-info-value">
+                                                        <span class="editable" id="about">{{customerDetails.details.created_at | toDateTime}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-8">
+                                                <div >
+                                                    <div class="widget-box">
+                                                        <div class="widget-header">
+                                                            <h4 class="widget-title lighter smaller">
+                                                                <i class="ace-icon fa fa-comment blue"></i>
+                                                                Conversations
+                                                            </h4>
+                                                        </div>
+
+                                                        <div class="widget-body">
+                                                            <div class="widget-main no-padding">
+                                                                <div class="dialogs">
+                                                                    <div class="itemdiv dialogdiv" ng-repeat="conversation in customerDetails.customer_conversations  | filter:conversation_fields">
+
+                                                                            <div class="body">
+                                                                                <div class="time">
+                                                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                                                    <span class="green">{{conversation.created_at}}</span>
+                                                                                </div>
+
+                                                                                <div class="name">
+                                                                                    <a href="/conversation/{{conversation.id}}/details">{{conversation.subject}}</a>
+                                                                                </div>
+
+                                                                                    <div class="text">{{recent_details.details[0]}}
+                                                                                </div>
+
+
+
+                                                                                <div class="tools">
+                                                                                    <a href="#" class="btn btn-minier btn-info">
+                                                                                        <i class="icon-only ace-icon fa fa-plus" ng-click="customerDetails.editConversation(conversation)"></i>
+                                                                                    </a>
+                                                                                    <a href="/conversation/{{conversation.id}}/details" class="btn btn-minier btn-info">
+                                                                                        <i class="icon-only ace-icon fa fa-eye"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <form>
+                                                                    <div class="form-actions">
+                                                                        <div class="input-group">
+                                                                            <input placeholder="Type the subject of the conversation here here ..." type="text" class="form-control" name="message"  ng-model="customerDetails.conversation_subject"/>
+                                                                            <span class="input-group-btn">
+																	<button class="btn btn-sm btn-info no-radius" type="submit" ng-click="customerDetails.addConversation()">
+																		<i class="ace-icon fa fa-share"></i>
+																		Add Conversation
+																	</button>
+																</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div><!-- /.widget-main -->
+                                                        </div><!-- /.widget-body -->
+                                                    </div><!-- /.widget-box -->
+                                                </div><!-- /.col -->
+                                        </div>
+
+                                    </div>
+                                    <div class="hr hr16 dotted"></div>
+                                    </div>
+
+
+
+
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+
+        </div><!-- /.main-content -->
+    </div>
+
+</div>
+

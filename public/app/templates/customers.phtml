@@ -1,0 +1,152 @@
+<div  class="main-container ace-save-state" id="main-container" ng-controller="CustomerController as customer">
+    <div class="row">
+        <span class="col-md-1.5" ng-include="'/app/templates/sidebar.phtml'"  style="padding-left: 40px"></span>
+        <div class="main-content col-md-10 "  >
+                <div class="main-content-inner ">
+                    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="ace-icon fa fa-home home-icon"></i>
+                                <a href="#">Home</a>
+                            </li>
+                            <li >Dashboard</li>
+                            <li  class="active">Customers</li>
+                        </ul><!-- /.breadcrumb -->
+
+                        <div class="nav-search" id="nav-search">
+                            <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search customers" class="nav-search-input" id="nav-search-input" autocomplete="off" ng-model="user_customer.fields" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                            </form>
+                        </div><!-- /.nav-search -->
+                    </div>
+
+                    <div class="page-content">
+
+                        <div class="page-header">
+                            <h1>
+                                Customers
+                                <small>
+                                    <i class="ace-icon fa fa-angle-double-right"></i>
+                                    Table
+                                </small>
+                            </h1>
+                        </div><!-- /.page-header -->
+
+
+                                <div class="row">
+
+                                    <div class="space-6"></div>
+
+                                    <div class="col-xs-12">
+                                        <table id="simple-table" class="table  table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" name="hu"/>
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="detail-col">Details</th>
+                                                <th>Name</th>
+                                                <th>Phone number</th>
+                                                <th class="hidden-480">Email</th>
+
+                                                <th>
+                                                    <i class="ace-icon glyphicon glyphicon-home hidden-480"></i>
+                                                    Address
+                                                </th>
+                                                <th class="hidden-480">Status</th>
+
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr>
+                                                <td class="center">
+
+                                                </td>
+
+                                                <td class="center">
+
+                                                </td>
+
+                                                <td>
+                                                  <input type="text" name="customer_name" placeholder="Customers name" class="form-control" ng-model="customer.new_customer.customer_name" required>
+                                                </td>
+                                                <td><input type="tel" name="customer_number" placeholder="070........."  class="form-control"  ng-model="customer.new_customer.phone_number"required></td>
+                                                <td class="hidden-480"><input type="email" name="customer_email" placeholder="email" class="form-control" ng-model="customer.new_customer.email" required></td>
+                                                <td><input type="text" name="address" placeholder="Customers address" class="form-control" ng-model="customer.new_customer.address" required></td>
+
+                                                <td class="hidden-480" >
+                                                    <div class="hidden-sm hidden-xs btn-group">
+                                                        <button class="btn btn-xs btn-primary" ng-click="customer.addNewCustomer(new_customer)">
+                                                            <i class="ace-icon fa fa-plus bigger-120"></i>
+                                                            Add Customer
+                                                        </button>
+
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+
+
+                                                </td>
+                                            </tr>
+
+
+                                            <tr ng-repeat="user_customer in customer.customers | filter:user_customer.fields">
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace"  name="hu" />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="" class="green bigger-140 show-details-btn" title="Show Details">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Details</span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="/customer/{{user_customer.id}}/details">{{user_customer.customer_name}}</a>
+                                                </td>
+                                                <td>{{user_customer.phone_number}}</td>
+                                                <td class="hidden-480">{{user_customer.email}}</td>
+                                                <td>{{user_customer.address}}</td>
+
+                                                <td class="hidden-480">
+                                                    <span class="label label-sm label-success" ng-if="user_customer.status_id == 0">InActive</span>
+                                                    <span class="label label-sm label-success" ng-if="user_customer.status_id == 1">Active</span>
+                                                </td>
+
+                                                <td ng-controller="CustomerController as customerActions">
+                                                    <button class="btn btn-xs btn-danger"   >
+                                                        <i class="ace-icon fa fa-pencil bigger-110" ng-click="customerActions.editCustomer(user_customer, $index)"></i>
+                                                        <i class="ace-icon fa fa-trash-o bigger-120" ng-click="customerActions.deleteCustomer(user_customer.id)"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div><!-- /.span -->
+                                </div><!-- /.row -->
+                                <!-- PAGE CONTENT ENDS -->
+                            </div><!-- /.col -->
+                       <!-- /.page-content -->
+                </div>
+
+            </div><!-- /.main-content -->
+        </div>
+
+    </div>

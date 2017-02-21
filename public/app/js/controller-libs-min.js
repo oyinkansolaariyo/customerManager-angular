@@ -1,0 +1,2 @@
+/*! customer-manager-angular 2017-02-02 */
+"use strict";!function(){var app=angular.module("ContactApp.controllers");app.controller("DashboardController",["$scope","$timeout","$routeParams",function($scope,$timeout,$routeParams){var vm=this;vm.user=__User}])}();

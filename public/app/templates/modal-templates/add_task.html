@@ -1,0 +1,14 @@
+<div class="form-group">
+    <input type="text"    class="form-control" ng-model="$ctrl.cardData.mscope.new_todo.description"  placeholder="Task Description">
+</div>
+<div class="form-group">
+    Choose a color
+    <select class="form-control" id="form-field-select-1" ng-model="$ctrl.cardData.mscope.new_todo.color_name">
+        <option ng-repeat=" color in $ctrl.cardData.mscope.colors" value="{{color.color_name}}">{{color.color_name}}</option>
+    </select>
+</div>
+
+<div class="form-group form-inline">
+    <label>Time:</label> <input type="time"  ng-model="$ctrl.cardData.mscope.new_todo.time">
+
+</div>

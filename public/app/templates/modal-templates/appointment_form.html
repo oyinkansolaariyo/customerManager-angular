@@ -1,0 +1,23 @@
+
+    <div class="row">
+
+        <div class="col-xs-12">
+              <div class="form-group">
+                     <input type="text"  value="$ctrl.cardData.mscope.conversation.subject"  class="form-control" ng-model="$ctrl.cardData.mscope.conversation.subject" disabled>
+              </div>
+              <div class="form-group">
+                  <textarea class="form-control" ng-model="$ctrl.cardData.mscope.appointment.description">
+                      Appointment Description here
+                  </textarea>
+              </div>
+            <div class="form-group form-inline">
+              <label>Date:</label>  <input type="date" class="datepicker " ng-model="$ctrl.cardData.mscope.appointment.appointment_date" >
+                <label>From:</label> <input type="time"  ng-model="$ctrl.cardData.mscope.appointment.from_time">
+               <label>To:</label> <input type="time"  ng-model="$ctrl.cardData.mscope.appointment.to_time">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="whom to see" ng-model="$ctrl.cardData.mscope.appointment.whom_to_see" >
+            </div>
+
+        </div>
+    </div>

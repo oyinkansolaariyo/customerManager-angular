@@ -1,0 +1,30 @@
+<div id="modal-wizard" class="modal in" style="display: block; padding-left: 0px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modal-wizard-container" class="no-steps-container">
+                <div class="modal-header">
+                    <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" ng-click="$ctrl.closeModal()">×</span>
+                    </button>
+                    <h4 class="modal_title">{{$ctrl.data.title}}</h4>
+                </div>
+
+                <div class="modal-body" id= "modal_body">
+
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button ng-if="$ctrl.showDefaultButtons" ng-click="$ctrl.closeModal()" type="button" class="btn btn-default margin-0" data-dismiss="modal">Close</button>
+                    <span id="buttons_holder">
+
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in"></div>

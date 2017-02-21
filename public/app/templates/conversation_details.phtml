@@ -1,0 +1,243 @@
+<div  class="main-container ace-save-state" id="main-container" ng-controller="ConversationController as conversationActions">
+    <div class="row">
+        <span class="col-md-1.5" ng-include="'/app/templates/sidebar.phtml'"  style="padding-left: 40px"></span>
+        <div class="main-content col-md-10 "  >
+            <div class="main-content-inner ">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li >Dashboard</li>
+                        <li  class="active">Customers</li>
+                        <li>Customer Detail</li>
+                        <li>Conversation</li>
+                        <li>Conversation Details</li>
+                    </ul><!-- /.breadcrumb -->
+
+                    <div class="nav-search" id="nav-search">
+                        <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                        </form>
+                    </div><!-- /.nav-search -->
+                </div>
+
+                <div class="page-content">
+
+                    <div class="page-header">
+                        <h1>
+                           {{conversationActions.conversation.subject}} Conversation
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                details
+                                <span class="badge badge-info" ng-click="conversationActions.showAppointments()"> {{conversationActions.conversation.appointment_count}} Appointments</span>
+                            </small>
+                            <span class="pull-right">
+                                {{conversationActions.conversation.created_at}}
+                            </span>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="tabbable">
+                                        <ul id="inbox-tabs" class="inbox-tabs nav nav-tabs padding-16 tab-size-bigger tab-space-1">
+                                            <li class="active">
+                                                <a data-toggle="tab" href=""  ng-click="conversationActions.getAConversationsDetails()" data-target="inbox">
+                                                    <i class="blue ace-icon fa fa-list bigger-130"></i>
+                                                    <span class="bigger-110">All</span>
+                                                </a>
+                                            </li>
+
+                                            <li ng-repeat="categories in conversationActions.categories ">
+                                                <a data-toggle="tab" href=""  ng-click="conversationActions.getAConversationsDetailByCategory(categories.id)">
+                                                    <i class="green ace-icon glyphicon glyphicon-user bigger-130" ng-if="categories.id == 1"></i>
+                                                    <i class="blue ace-icon fa fa-pencil bigger-130" ng-if="categories.id == 2"></i>
+                                                    <span class="bigger-110">{{categories.name}}</span>
+                                                </a>
+                                            </li>
+
+
+
+                                        </ul>
+
+                                        <div class="tab-content no-border no-padding">
+                                            <div id="inbox" class="tab-pane in active">
+                                                <div class="message-container">
+                                                    <div id="id-message-list-navbar" class="message-navbar clearfix">
+                                                        <div class="message-bar">
+                                                            <div class="message-toolbar">
+                                                                <div class="inline position-relative align-left">
+                                                                    <button type="button" class="btn-white btn-primary btn btn-xs dropdown-toggle" data-toggle="dropdown" ng-disabled="conversationActions.checked_length == 0">
+                                                                        <span class="bigger-110">Action</span>
+
+                                                                        <i class="ace-icon fa fa-caret-down icon-on-right"></i>
+                                                                    </button>
+
+                                                                    <ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+
+                                                                        <li>
+                                                                            <a ng-click="conversationActions.deleteDetails()">
+                                                                                <i class="ace-icon fa fa-trash-o red bigger-110"></i>&nbsp; Delete
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                                <div class="inline position-relative align-left">
+                                                                    <button type="button" class="btn-white btn-primary btn btn-xs dropdown-toggle" data-toggle="dropdown" ng-disabled="conversationActions.checked_length == 0">
+                                                                        <i class="ace-icon fa fa-folder-o bigger-110 blue"></i>
+                                                                        <span class="bigger-110">Move to</span>
+
+                                                                        <i class="ace-icon fa fa-caret-down icon-on-right"></i>
+                                                                    </button>
+
+                                                                    <ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+                                                                        <li ng-repeat="category in conversationActions.categories">
+                                                                            <a data-toggle="tab"  ng-click="conversationActions.updateDetailsCategory(category.id)">
+                                                                                <i class="ace-icon fa fa-stop {{category.color}}"></i>&nbsp;
+                                                                                <span class="{{category.color}}">{{category.name}}</span>
+                                                                            </a>
+                                                                        </li>
+
+
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="messagebar-item-left">
+                                                                <label class="inline middle">
+                                                                    <input type="checkbox" id="id-toggle-all" class="ace" ng-model="conversationActions.check_all" ng-true-value="1" ng-false-value="0" ng-disabled="conversationActions.details.length == 0"/>
+                                                                    <span class="lbl"></span>
+                                                                </label>
+
+                                                                &nbsp;
+                                                            </div>
+
+                                                            <div class="messagebar-item-right">
+                                                                <div class="inline position-relative">
+                                                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                                                        Sort &nbsp;
+                                                                        <i class="ace-icon fa fa-caret-down bigger-125"></i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu dropdown-lighter dropdown-menu-right dropdown-100">
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="ace-icon fa fa-check green"></i>
+                                                                                Date
+                                                                            </a>
+                                                                        </li>
+
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="nav-search minimized">
+                                                                <form class="form-search">
+																		<span class="input-icon">
+																			<input type="text" autocomplete="off" class="input-small nav-search-input"  placeholder="Search details" />
+																			<i class="ace-icon fa fa-search nav-search-icon"></i>
+																		</span>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="message-list-container">
+                                                        <div class="message-list" id="message-list">
+                                                            <div class="message-item">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+
+                                                                            <textarea rows="5"  class="form-control" ng-model="conversationActions.new_detail.text">Add a new detail to the conversation</textarea>
+                                                                            <div class="space-2"></div>
+                                                                            <button class="btn btn-success btn-sm pull-right" type="submit" ng-click="conversationActions.addDetail()">
+                                                                                <i class="message-star  fa fa-plus "> {{conversationActions.btnAction}} detail</i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                             <div class="radio ">
+                                                                               <label  ng-repeat=" categories in conversationActions.categories ">
+                                                                                    <input name="form-field-radio" type="radio" class="ace" ng-model="conversationActions.new_detail.category_id" ng-value="{{categories.id}}">
+                                                                                    <span class="lbl" > {{categories.name}}</span>
+                                                                               </label>
+                                                                            </div>
+
+                                                                            <button class="btn btn-primary btn-sm" type="submit" ng-click="conversationActions.bookAppointment()">
+                                                                               Book Appointment</i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                            </div>
+                                                            <div class="message-item" ng-repeat="detail in conversationActions.details track by $index">
+                                                                <label class="inline">
+                                                                    <input ng-init="conversationActions.details[$index].checked = 0" type="checkbox" class="ace"  ng-model="conversationActions.details[$index].checked"  ng-true-value = "1" ng-false-value="0"/>
+                                                                    <span class="lbl"></span>
+                                                                </label>
+
+                                                                <span class="pull-right blue">{{detail.created_at}}</span>
+                                                                <span class="summary">
+																		<span class="text blue" ng-click="conversationActions.updateDetails(detail)">
+																			{{detail.text}}
+                                                                            <span class="label label-success arrowed" ng-if="detail.category_id == 1">Personal</span>
+                                                                            <span class="label label-primary arrowed" ng-if="detail.category_id == 2">Business</span>
+																		</span>
+																	</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="message-footer clearfix">
+                                                        <div class="pull-left"> </div>
+
+                                                        <div class="pull-right">
+
+                                                            &nbsp; &nbsp;
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="hide message-footer message-footer-style2 clearfix">
+                                                        <div class="pull-left"> simpler footer </div>
+
+                                                        <div class="pull-right">
+
+                                                            &nbsp; &nbsp;
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.tab-content -->
+                                    </div><!-- /.tabbable -->
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+
+                        </div>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+
+    </div><!-- /.main-content -->
+</div>
+
+</div>
+

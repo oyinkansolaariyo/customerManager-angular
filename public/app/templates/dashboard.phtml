@@ -1,0 +1,110 @@
+
+<div  class="main-container ace-save-state" id="main-container" ng-controller="DashboardController as userDetails">
+    <div class="row">
+        <span class="col-md-1.5" ng-include="'/app/templates/sidebar.phtml'"  style="padding-left: 40px" ng-controller="DashboardController as userDetails"></span>
+        <div class="main-content col-md-10 "  >
+            <div class="main-content-inner ">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li >Dashboard</li>
+                        <li  class="active"></li>
+                    </ul><!-- /.breadcrumb -->
+
+                </div>
+
+                <div class="page-content">
+
+                    <div class="page-header">
+                        <h1>
+                            Dashboard
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                Overview and Statistics
+                            </small>
+                            <button id="big_buy_button" class="btn btn-success">Buy ticket</button>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="alert alert-block alert-success">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <i class="ace-icon fa fa-times"></i>
+                                </button>
+
+                                <i class="ace-icon fa fa-check green"></i>
+
+                                Welcome to
+                                <strong class="green">
+                                    your dashboard
+                                </strong>,
+
+                            </div>
+
+                            <div class="row">
+                                <div class="space-6"></div>
+
+                                <div class="col-sm-12 infobox-container">
+                                    <div class="infobox infobox-green">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa fa-users"></i>
+                                        </div>
+
+                                        <div class="infobox-data">
+                                            <span class="infobox-data-number">{{userDetails.customer_count}}</span>
+                                            <div class="infobox-content">Customers</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="infobox infobox-red">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa fa-list"></i>
+                                        </div>
+
+                                        <div class="infobox-data">
+                                            <span class="infobox-data-number">{{userDetails.todo_count}}</span>
+                                            <div class="infobox-content">Items in todo</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="infobox infobox-green">
+                                        <div class="infobox-icon">
+                                            <i class="ace-icon fa fa-headphones"></i>
+                                        </div>
+
+                                        <div class="infobox-data">
+                                            <span class="infobox-data-number">{{userDetails.conversation_count}}</span>
+                                            <div class="infobox-content">Conversations</div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="space-6"></div>
+                                </div>
+
+                                <div class="vspace-12-sm"></div>
+
+                            </div><!-- /.row -->
+
+                            <div class="hr hr32 hr-dotted"></div>
+
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+
+        </div><!-- /.main-content -->
+    </div>
+
+</div>
+

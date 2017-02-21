@@ -1,0 +1,36 @@
+
+                <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
+                    <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Whom to see</th>
+                        <th>
+                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                            From</th>
+
+                        <th>
+                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                            To
+                        </th>
+
+                        <th>Done</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="appointment in $ctrl.cardData.mscope.all_conversation_appointments">
+                        <td>
+                           {{appointment.description}}
+                        </td>
+                        <td>{{appointment.whom_to_see}}</td>
+                        <td>{{appointment.from_time}}</td>
+                        <td>{{appointment.to_time}}</td>
+                        <td>
+                            <input type="checkbox" id="id-toggle-all" class="ace"  ng-true-value="1" ng-false-value="0"  ng-model="appointment.status_id" ng-change="$ctrl.cardData.mscope.updateAppointmentStatus(appointment.id,appointment.status_id)"/>
+                            <span class="lbl"></span>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
